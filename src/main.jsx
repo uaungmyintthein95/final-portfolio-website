@@ -129,15 +129,15 @@ const projects = [
 
 const skills = [
   ["Unreal Engine 5", 90],
-  ["Revit & SketchUp", 90],
-  ["Cesium", 80],
+  ["Revit & SketchUp & AutoCAD", 90],
+  ["Cesium", 70],
   ["Twinmotion & D5 & Enscape & Lumion", 95],
   ["GIS / QGIS", 75],
   ["Navisworks", 90],
   ["Python", 70],
-  ["C++", 60],
-  ["WingEarth", 75],
-  ["Houdini & Blender", 75],
+  ["C++ , HTML , JS ,CSS", 50],
+  ["WingEarth , CloudCompare", 75],
+  ["Houdini & Blender", 70],
 ];
 
 const experience = [
