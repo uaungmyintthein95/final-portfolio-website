@@ -241,13 +241,7 @@ document.querySelector("#root").innerHTML = `
           <a href="https://uaungmyintthein171.wixsite.com/1710" target="_blank" rel="noreferrer">BIM Portfolio</a>
           <a href="mailto:aungmyintthein9593@gmail.com">Email</a>
         </div>
-      </div>
-      <aside class="hero-callouts" aria-label="Featured work">
-        <button type="button" data-open-project="riverport"><strong>Riverport 3D Tour</strong><span>WebGL + 360°</span></button>
-        <button type="button" data-open-project="shin"><strong>Shin Digital Twin</strong><span>Urban simulation</span></button>
-        <button type="button" data-open-project="akasaka"><strong>Akasaka Project</strong><span>IoT + Unreal Engine</span></button>
-      </aside>
-      
+
     </section>
 
     <section class="section about-section" id="about" aria-labelledby="about-title" style="margin-top:-65px;margin-bottom: -130px;">
