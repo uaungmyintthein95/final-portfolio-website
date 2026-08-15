@@ -8,7 +8,7 @@ const projects = [
     id: "riverport",
     title: "Riverport Interactive City Tour",
     category: "Web 3D",
-    image: "/assets/hero-smart-city.gif",
+    image: "/assets/hero-smart-city01.gif",
     year: "2026",
     summary: "A browser-based 3D city experience combining a fly-through map, interactive landmarks and immersive 360° views.",
     tech: ["Three.js", "WebGL", "GLB", "360° Panorama"],
@@ -229,7 +229,7 @@ document.querySelector("#root").innerHTML = `
       <div class="hero-content">
         <p class="eyebrow">Digital Twin · BIM/CIM · Unreal Engine</p>
         <h1 id="hero-title">Mr.Aung <span>Myint</span> Thein</h1>
-        <p class="hero-roles">Civil BIM/CIM Engineer<br />Digital Twin Specialist<br />Unreal Engine Developer</p>
+        <p class="hero-roles">Architecture/Civil, BIM/CIM Engineer<br />Digital Twin Specialist<br />Unreal Engine Developer</p>
         <p class="hero-copy">Designing the future of smart infrastructure through real-time 3D technology and digital twin solutions.</p>
         <div class="button-row">
           <a class="button button-primary" href="#projects">View projects</a>
