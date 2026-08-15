@@ -419,7 +419,7 @@ document.querySelector("#root").innerHTML = `
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
-    <a class="brand" href="#home" aria-label="Aung Myint Thein home">AMT</a>
+    <a class="brand" href="#home" aria-label="Aung Myint Thein home">Mr.AMT</a>
     <nav class="desktop-nav" aria-label="Primary navigation">
       <a href="#home" data-i18n="nav.home">Home</a>
       <a href="#about" data-i18n="nav.about">About</a>
@@ -729,7 +729,7 @@ document.querySelector("#root").innerHTML = `
   </main>
 
   <footer>
-    <a class="brand" href="#home">AMT</a>
+    <a class="brand" href="#home">Mr.AMT</a>
     <p>Aung Myint Thein © 2026. All rights reserved.</p>
     <p data-i18n="footer.tagline">Building the future with BIM, Digital Twins, and Real-Time 3D.</p>
     <a href="#home" data-i18n="footer.backToTop">Back to top</a>

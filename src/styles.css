@@ -184,6 +184,29 @@ img {
   border-bottom: 1px solid rgb(26 52 69 / 55%);
 }
 
+/* Mobile-nav language toggle: sits at the bottom of the slide-down menu,
+   full width, styled to match the nav links rather than the small header pill. */
+.mobile-nav .language-toggle--mobile {
+  display: block;
+  width: 100%;
+  margin-top: 14px;
+  padding: 13px 0;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--cyan);
+  text-align: center;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.mobile-nav .language-toggle--mobile:hover,
+.mobile-nav .language-toggle--mobile:focus-visible {
+  border-color: var(--cyan);
+  background: rgb(12 207 247 / 8%);
+}
+
 .hero {
   position: relative;
   min-height: 680px;
@@ -1605,8 +1628,22 @@ textarea:focus-visible {
     top: 63px;
   }
 
-  .language-toggle {
-    display: none;
+  /* Keep the header language toggle visible on mobile, just compact,
+     so it sits next to the hamburger button instead of being hidden. */
+  .header-actions {
+    gap: 6px;
+  }
+
+  .header-actions > .language-toggle {
+    display: inline-flex;
+    padding: 8px 8px;
+    font-size: 0.64rem;
+    white-space: nowrap;
+  }
+
+  .menu-toggle {
+    padding: 8px 10px;
+    font-size: 0.68rem;
   }
 
   .hero {
