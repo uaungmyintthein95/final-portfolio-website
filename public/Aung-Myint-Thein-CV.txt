@@ -1,0 +1,25 @@
+AUNG MYINT THEIN
+Civil BIM/CIM Engineer
+Digital Twin Specialist
+Unreal Engine Developer
+
+Experience
+- VACS Co., Ltd. — Technical Leader, BIM/CIM & Digital Twin
+- RIYOWA Co., Ltd. — Construction Management Engineer
+- MakharYeMon Co., Ltd. — Site Engineer
+- Global Grand Group Co., Ltd. — Roadway Engineer
+
+Core skills
+- Unreal Engine 5
+- Revit
+- Cesium
+- Civil 3D
+- GIS / QGIS
+- Navisworks
+- Python
+- C++
+- Twinmotion
+- Blender
+
+Location: Fukuoka, Japan
+Email: aungmyintthein9993@gmail.com

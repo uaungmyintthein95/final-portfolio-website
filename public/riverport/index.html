@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<link rel="icon" href="data:," />
+<title>Riverport 3D City Tour — Aung Myint Thein</title>
+<meta name="description" content="An interactive Three.js city tour by Aung Myint Thein: fly over the skyline, explore landmarks, and step inside 360° views." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+<script type="importmap">
+{
+  "imports": {
+    "three": "./vendor/three.module.min.js"
+  }
+}
+</script>
+</head>
+<body>
+<div id="app">
+
+  <!-- LOADER -->
+  <div id="loader">
+    <div id="loader-ring"></div>
+    <div id="loader-label">Loading city&hellip;</div>
+  </div>
+
+  <!-- 3D CANVAS -->
+  <canvas id="scene-canvas"></canvas>
+
+  <!-- DOM PIN LAYER (projected from 3D each frame) -->
+  <div id="pin-layer"></div>
+
+  <!-- TOP BAR -->
+  <div id="topbar">
+    <div class="brand-group">
+      <a id="portfolio-back" href="/#featured-case" target="_top" aria-label="Back to Aung Myint Thein portfolio">← Portfolio</a>
+      <div id="brand"><span class="mark">/</span>Riverport</div>
+    </div>
+    <div id="topbar-actions">
+      <button class="icon-btn" id="info-btn" aria-label="About this tour" title="About">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><circle cx="12" cy="8" r="0.5" fill="currentColor"/></svg>
+      </button>
+      <button class="icon-btn" id="mute-btn" aria-label="Mute">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9v6h4l5 5V4L8 9H4z"/><line x1="16" y1="9" x2="21" y2="15"/><line x1="21" y1="9" x2="16" y2="15"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ABOUT THIS EXPERIENCE -->
+  <div id="about-tour" role="dialog" aria-modal="true" aria-labelledby="about-tour-title" hidden>
+    <div class="about-tour-card">
+      <button class="icon-btn" id="about-tour-close" aria-label="Close project information">×</button>
+      <p class="intro-kicker">Featured portfolio experience</p>
+      <h2 id="about-tour-title">Riverport 3D City Tour</h2>
+      <p>Built by Aung Myint Thein as an interactive WebGL study combining an optimized city model, camera navigation, landmark storytelling and 360° panoramas.</p>
+      <div class="about-tour-tags"><span>Three.js</span><span>WebGL</span><span>GLB</span><span>360°</span></div>
+      <a href="/#contact" target="_top">Discuss an interactive 3D project</a>
+    </div>
+  </div>
+
+  <!-- BOTTOM BAR -->
+  <div id="bottombar">
+    <div id="scale-readout">
+      <div id="compass">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 L15 12 L12 22 L9 12 Z" fill="currentColor"/></svg>
+      </div>
+      <div id="scale-bar">
+        <div id="scale-ticks"></div>
+        <span id="scale-label">50 m</span>
+      </div>
+    </div>
+    <button id="all-places-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 20l-5.5 2V6L9 4m0 16l6 2m-6-2V4m6 18l5.5-2V4L15 6m0 14V4m0 2L9 4"/></svg>
+      All places
+    </button>
+  </div>
+
+  <!-- INTRO -->
+  <div id="intro">
+    <div id="intro-copy">
+      <p class="intro-kicker">Immersive city tour</p>
+      <h1>Discover Riverport through light, water and story.</h1>
+      <p class="intro-description">Fly over the skyline, tap a landmark and step into a cinematic 360° view.</p>
+    </div>
+    <div id="intro-lines"></div>
+    <button id="intro-skip">Skip intro</button>
+  </div>
+
+  <!-- PLACE DETAIL PANEL -->
+  <aside id="place-panel">
+    <div class="cover">
+      <span class="theme-tag"></span>
+      <button id="panel-close" type="button" aria-label="Close place details">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><line x1="4" y1="4" x2="20" y2="20"/><line x1="20" y1="4" x2="4" y2="20"/></svg>
+      </button>
+    </div>
+    <div class="body">
+      <div class="hover-title"></div>
+      <h2></h2>
+      <div class="description"></div>
+      <button id="panel-explore">Step inside &mdash; 360&deg; view</button>
+      <div class="address"></div>
+    </div>
+  </aside>
+
+  <!-- ALL PLACES GRID -->
+  <div id="all-places">
+    <button class="icon-btn" id="all-places-close" aria-label="Close" style="position:absolute; top:1.8rem; right:1.8rem;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="4" x2="20" y2="20"/><line x1="20" y1="4" x2="4" y2="20"/></svg>
+    </button>
+    <h2>All places</h2>
+    <div id="all-places-grid"></div>
+  </div>
+
+  <!-- 360 PANORAMA VIEWER -->
+  <div id="pano-view">
+    <canvas id="pano-canvas"></canvas>
+    <div id="pano-hud">
+      <div id="pano-hud-top">
+        <button id="pano-back">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="11 6 5 12 11 18"/></svg>
+          Back to map
+        </button>
+        <span id="pano-title"></span>        <button id="pano-fullscreen" type="button">Fullscreen</button>      </div>
+      <div id="pano-hint">Drag to look around &middot; Scroll to zoom</div>
+    </div>
+  </div>
+
+</div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
