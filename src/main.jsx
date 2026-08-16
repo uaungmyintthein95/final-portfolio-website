@@ -6,7 +6,7 @@ const cvUrl = "/portfolio-assets/pdf/Aung%20Myint%20Thein%20CV%202026.pdf";
 const projects = [
   {
     id: "riverport",
-    title: "Tokyo Interactive City Tour",
+    title: "Tokyo Riverport Interactive City Tour",
     category: "Web 3D",
     image: "/assets/Tokyo Interactive City Tour.gif",
     year: "2026",
@@ -225,7 +225,7 @@ const TRANSLATIONS = {
     "projects.empty": "No projects match this filter.",
 
     "featured.eyebrow": "Featured case study",
-    "featured.title": "Tokyo Interactive City Tour",
+    "featured.title": "Tokyo Riverport Interactive City Tour",
     "featured.lead": "A complete WebGL city experience that turns 3D urban data into an explorable digital destination.",
     "featured.li1": "Cinematic camera fly-through over an optimized Tokyo city model",
     "featured.li2": "Interactive landmark pins, stories and guided camera movement",
@@ -578,7 +578,7 @@ document.querySelector("#root").innerHTML = `
     <section class="featured-case" id="featured-case" aria-labelledby="featured-title">
       <div class="featured-copy">
         <p class="eyebrow" data-i18n="featured.eyebrow">Featured case study</p>
-        <h2 id="featured-title" data-i18n="featured.title">Tokyo Interactive City Tour</h2>
+        <h2 id="featured-title" data-i18n="featured.title">Tokyo Riverport Interactive City Tour</h2>
         <p class="lead" data-i18n="featured.lead">A complete WebGL city experience that turns 3D urban data into an explorable digital destination.</p>
         <div class="tags"><span>Three.js</span><span>WebGL</span><span>GLB</span><span>360° Panorama</span></div>
         <ul>
