@@ -111,3 +111,5 @@ export function createPanoramaViewer(canvas) {
 
   return { load, start, stop, resize };
 }
+
+

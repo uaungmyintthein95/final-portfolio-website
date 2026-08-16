@@ -14,39 +14,41 @@ export const CITY = {
 
 export const PLACES = [
   {
-    id: "old-harbor",
-    slug: "old-harbor",
-    title: "Old // Harbor",
-    shortTitle: "Old Harbor",
-    hoverTitle: "Old Harbor / Waterfront /",
+    id: "Harakado",
+    slug: "Harakado",
+    title: "Harakado",
+    shortTitle: "Harakado",
+    hoverTitle: "Harakado / Palaza /",
     theme: "PICTURESQUE",
     ambiance: "outdoor",
-    address: "Quai Nord, Riverport",
+    address: "Tokyo, Harakado",
     link: "https://example.com",
     position: { x: -120, z: 40 }, // local meters from CITY.center
-    panorama: { image: "assets/panos/old-harbor.png", angle: 210, fov: 80 },
-    cover: "assets/covers/old-harbor.png",
+    panorama: { image: "assets/panos/Harakado.jpg", angle: 210, fov: 80 },
+    cover: "assets/covers/Harakado.jpg",
     description: [
-      "The old harbor is the beating heart of the city, lined with fishing boats and cafés that spill onto the quay at sunset.",
-      "Walk the breakwater at dawn and you'll have the whole waterfront to yourself before the market stalls open.",
+      "The plaza is the beating heart of the city.",
+      ,
     ],
   },
   {
-    id: "city-hall",
-    slug: "city-hall",
-    title: "City // Hall",
-    shortTitle: "City Hall",
-    hoverTitle: "City Hall / Old Town /",
+    id: "Tokyo-Station",
+    slug: "Tokyo-Station",
+    title: "Tokyo Station",
+    shortTitle: "Tokyo Station",
+    hoverTitle: "Tokyo Station / Transportation /",
     theme: "MOBILISED",
     ambiance: "culture",
     address: "Place de la Mairie, Riverport",
     link: "https://example.com",
     position: { x: 10, z: -10 },
-    panorama: { image: "assets/panos/city-hall.jpg", angle: 335, fov: 80 },
-    cover: "assets/covers/city-hall.jpg",
+    panorama: { image: "assets/panos/Tokyo-Station.jpg", angle: 335, fov: 80 },
+    
+  
+    cover: "assets/covers/Tokyo-Station.jpg",
     description: [
-      "An imposing 19th-century facade hides a modern council chamber where the city's 61 elected representatives meet twice a month.",
-      "The steps out front are the unofficial start line for every parade the city throws.",
+      "Tokyo Station (Japanese: 東京駅, Hepburn: Tōkyō-eki; pronounced [to̞ːkʲo̞ːe̞kʲi]) is a major railway station and a central rail hub in Chiyoda, Tokyo, Japan. The original station is located in Chiyoda's Marunouchi business district near the Imperial Palace grounds. The newer Eastern extension is not far from the Ginza commercial district. Due to the large area covered by the station, it is divided into the Marunouchi (west) and Yaesu (east) sides in its directional signage.",
+      ,
     ],
   },
   {
@@ -54,17 +56,16 @@ export const PLACES = [
     slug: "botanic-garden",
     title: "Botanic // Garden",
     shortTitle: "Botanic Garden",
-    hoverTitle: "Botanic Garden / Riverside /",
+    hoverTitle: "Botanic Garden / Shinjuku /",
     theme: "EXOTIC",
     ambiance: "outdoor",
-    address: "Avenue du Parc, Riverport",
+    address: "Shinjuku",
     link: "https://example.com",
     position: { x: 180, z: 120 },
     panorama: { image: "assets/panos/botanic-garden.jpg", angle: 250, fov: 80 },
     cover: "assets/covers/botanic-garden.png",
     description: [
-      "Ninety species of Mediterranean flora share the grounds with a small pond that freezes exactly once a decade.",
-      "Locals come for the shade; visitors come for the view back over the rooftops.",
+      "--",
     ],
   },
   {
@@ -81,8 +82,7 @@ export const PLACES = [
     panorama: { image: "assets/panos/craft-brewery.jpg", angle: 185, fov: 80 },
     cover: "assets/covers/craft-brewery.jpg",
     description: [
-      "An independent brewery that names every batch after a local landmark — you can taste the harbor, the garden, and the old bridge, one glass at a time.",
-      "The tasting room keeps an industrial, unpolished feel on purpose.",
+      "--.",
     ],
   },
   {
@@ -90,17 +90,17 @@ export const PLACES = [
     slug: "observatory",
     title: "City // Observatory",
     shortTitle: "Observatory",
-    hoverTitle: "Observatory / Hilltop /",
+    hoverTitle: "Observatory / Shibuya /",
     theme: "LUNAR",
     ambiance: "culture",
-    address: "2 Place de l'Astronome, Riverport",
+    address: "2 Place de l'Astronome, Tokyo",
     link: "https://example.com",
     position: { x: 250, z: -80 },
     panorama: { image: "assets/panos/observatory.jpg", angle: 325, fov: 80 },
     cover: "assets/covers/observatory.jpg",
     description: [
-      "Built for research, kept open for everyone. The dome's original 19th-century telescope still points at the sky on clear nights.",
-      "Free public viewings run the first Friday of every month.",
+      "Built for research, kept open for everyone.",
+      "Free public viewings run  every month.",
     ],
   },
   {
@@ -123,6 +123,21 @@ export const PLACES = [
   },
 ];
 
+if (location.panorama?.type === "google-streetview") {
+  panoramaContainer.innerHTML = `
+    <iframe
+      src="${location.panorama.url}"
+      width="100%"
+      height="100%"
+      style="border:0;"
+      allowfullscreen
+      loading="lazy"
+      referrerpolicy="strict-origin-when-cross-origin">
+    </iframe>
+  `;
+} 
+
+
 export const INTRO = {
   lines: [
     ["Full of", "Surprise"],
@@ -140,3 +155,19 @@ export const INTRO = {
   ],
   duration: 9000, // ms
 };
+
+// ---------------------------------------------------------------------------
+// PLACE DATA
+// ---------------------------------------------------------------------------
+// Each place has:
+// - map position
+// - panorama configuration
+// - cover image
+// - description
+
+// Panorama types:
+//   type: "image"            → local 360° JPG/PNG panorama
+//   type: "google-streetview" → Google Street View iframe URL
+
+// The actual panorama rendering should be handled by your main JavaScript.
+// ---------------------------------------------------------------------------
